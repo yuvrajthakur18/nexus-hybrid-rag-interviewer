@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased overflow-x-hidden;
+    /* Ambient gradient background */
+    background: radial-gradient(circle at top left, #1e1b4b, transparent 30%),
+                radial-gradient(circle at bottom right, #312e81, transparent 40%),
+                radial-gradient(circle at 80% 20%, #4c1d95, transparent 20%),
+                #020617;
+    background-size: 200% 200%;
+    animation: gradientMove 15s ease infinite alternate;
+  }
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/30 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)];
+  }
+  
+  .glass-input {
+    @apply bg-white/5 border border-white/10 focus:border-indigo-500/50 focus:bg-white/10 hover:bg-white/10 transition-all duration-300 outline-none block w-full;
+  }
+
+  .premium-btn {
+    @apply relative overflow-hidden transition-all duration-300 transform active:scale-95 disabled:scale-100 disabled:opacity-50;
+  }
+}
